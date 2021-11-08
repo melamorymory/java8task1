@@ -24,9 +24,22 @@ public class Radio {
         return currentVolume;
     }
 
+    public void setCurrentVolume(int currentVolume) {
+        if (currentVolume > maxVolume) {
+            return;
+        }
+        if (currentVolume < minVolume) {
+            return;
+        }
+        this.currentVolume = currentVolume;
+    }
+
     public void increaseChannel() {
         if (currentChannel < maxChannel) {
             currentChannel = currentChannel + 1;
+        }
+        if (currentChannel == maxChannel) {
+            currentChannel = minChannel;
         }
     }
 
@@ -34,17 +47,8 @@ public class Radio {
         if (currentChannel > minChannel) {
             currentChannel = currentChannel - 1;
         }
-    }
-
-    public void transitFrom9To0Channel() {
-        if (currentChannel == 9) {
-            currentChannel = 0;
-        }
-    }
-
-    public void transitFrom0To9Channel() {
-        if (currentChannel == 0) {
-            currentChannel = 9;
+        if (currentChannel == minChannel) {
+            currentChannel = maxChannel;
         }
     }
 
