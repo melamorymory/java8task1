@@ -84,8 +84,7 @@ class RadioTest {
     void shouldDecreaseChannel() {
         Radio radio = new Radio();
         int expected = 1;
-        radio.increaseChannel();
-        radio.increaseChannel();
+        radio.setCurrentChannel(2);
         radio.decreaseChannel();
         int actual = radio.getCurrentChannel();
         assertEquals(expected, actual);

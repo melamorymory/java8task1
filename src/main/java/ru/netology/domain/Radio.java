@@ -35,20 +35,21 @@ public class Radio {
     }
 
     public void increaseChannel() {
-        if (currentChannel < maxChannel) {
-            currentChannel = currentChannel + 1;
-        }
         if (currentChannel == maxChannel) {
             currentChannel = minChannel;
         }
+        else {
+            currentChannel = currentChannel + 1;
+        }
+
     }
 
     public void decreaseChannel() {
-        if (currentChannel > minChannel) {
-            currentChannel = currentChannel - 1;
-        }
         if (currentChannel == minChannel) {
             currentChannel = maxChannel;
+        }
+        else {
+            currentChannel = currentChannel - 1;
         }
     }
 
