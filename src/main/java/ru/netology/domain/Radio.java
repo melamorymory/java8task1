@@ -3,10 +3,22 @@ package ru.netology.domain;
 public class Radio {
     private int currentChannel;
     private int currentVolume;
-    private int maxChannel = 9;
+    private int channelCount = 10;
     private int minChannel;
-    private int maxVolume = 10;
+    private int maxVolume = 100;
     private int minVolume;
+
+    public Radio() {
+    }
+
+    public Radio(int currentVolume) {
+        this.currentVolume = currentVolume;
+    }
+
+    public Radio(int currentChannel, int channelCount) {
+        this.currentChannel = currentChannel;
+        this.channelCount = channelCount;
+    }
 
     public void increaseVolume() {
         if (currentVolume < maxVolume) {
@@ -35,7 +47,7 @@ public class Radio {
     }
 
     public void increaseChannel() {
-        if (currentChannel == maxChannel) {
+        if (currentChannel == channelCount - 1) {
             currentChannel = minChannel;
         }
         else {
@@ -46,7 +58,7 @@ public class Radio {
 
     public void decreaseChannel() {
         if (currentChannel == minChannel) {
-            currentChannel = maxChannel;
+            currentChannel = channelCount - 1;
         }
         else {
             currentChannel = currentChannel - 1;
@@ -54,7 +66,7 @@ public class Radio {
     }
 
     public void setCurrentChannel(int currentChannel) {
-        if (currentChannel > maxChannel) {
+        if (currentChannel > channelCount - 1) {
             return;
         }
         if (currentChannel < minChannel) {
