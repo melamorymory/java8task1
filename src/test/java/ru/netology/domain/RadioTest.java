@@ -8,34 +8,37 @@ class RadioTest {
 
     @Test
     void shouldIncreaseVolumeFrom33To34() {
-        Radio radio = new Radio(33);
-        int expected = 34;
+        Radio radio = new Radio();
+        radio.setCurrentVolume(33);
         radio.increaseVolume();
+        int expected = 34;
         int actual = radio.getCurrentVolume();
         assertEquals(expected, actual);
     }
 
     @Test
     void shouldNotIncreaseVolumeFrom100() {
-        Radio radio = new Radio(100);
-        int expected = 100;
+        Radio radio = new Radio();
+        radio.setCurrentVolume(100);
         radio.increaseVolume();
+        int expected = 100;
         int actual = radio.getCurrentVolume();
         assertEquals(expected, actual);
     }
 
     @Test
     void shouldDecreaseVolumeFrom33To32() {
-        Radio radio = new Radio(33);
-        int expected = 32;
+        Radio radio = new Radio();
+        radio.setCurrentVolume(33);
         radio.decreaseVolume();
+        int expected = 32;
         int actual = radio.getCurrentVolume();
         assertEquals(expected, actual);
     }
 
     @Test
     void shouldNotDecreaseVolumeFrom0() {
-        Radio radio = new Radio(0);
+        Radio radio = new Radio();
         int expected = 0;
         radio.decreaseVolume();
         int actual = radio.getCurrentVolume();
@@ -71,36 +74,40 @@ class RadioTest {
 
     @Test
     void shouldIncreaseChannel() {
-        Radio radio = new Radio(7, 15);
-        int expected = 8;
+        Radio radio = new Radio(15);
+        radio.setCurrentChannel(7);
         radio.increaseChannel();
+        int expected = 8;
         int actual = radio.getCurrentChannel();
         assertEquals(expected, actual);
     }
 
     @Test
     void shouldDecreaseChannel() {
-        Radio radio = new Radio(7, 15);
-        int expected = 6;
+        Radio radio = new Radio(15);
+        radio.setCurrentChannel(7);
         radio.decreaseChannel();
+        int expected = 6;
         int actual = radio.getCurrentChannel();
         assertEquals(expected, actual);
     }
 
     @Test
     void shouldTransitFromMaxTo0Channel() {
-        Radio radio = new Radio(14, 15);
-        int expected = 0;
+        Radio radio = new Radio(15);
+        radio.setCurrentChannel(14);
         radio.increaseChannel();
+        int expected = 0;
         int actual = radio.getCurrentChannel();
         assertEquals(expected, actual);
     }
 
     @Test
     void shouldTransitFrom0ToMaxChannel() {
-        Radio radio = new Radio(0, 15);
-        int expected = 14;
+        Radio radio = new Radio(15);
+        radio.setCurrentChannel(0);
         radio.decreaseChannel();
+        int expected = 14;
         int actual = radio.getCurrentChannel();
         assertEquals(expected, actual);
     }
@@ -116,8 +123,8 @@ class RadioTest {
 
     @Test
     void shouldNotSetCurrentChannelOverMax() {
-        Radio radio = new Radio(5, 15);
-        int expected = 5;
+        Radio radio = new Radio(15);
+        int expected = 0;
         radio.setCurrentChannel(20);
         int actual = radio.getCurrentChannel();
         assertEquals(expected, actual);

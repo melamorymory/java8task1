@@ -11,12 +11,7 @@ public class Radio {
     public Radio() {
     }
 
-    public Radio(int currentVolume) {
-        this.currentVolume = currentVolume;
-    }
-
-    public Radio(int currentChannel, int channelCount) {
-        this.currentChannel = currentChannel;
+    public Radio(int channelCount) {
         this.channelCount = channelCount;
     }
 
@@ -77,5 +72,8 @@ public class Radio {
 
     public int getCurrentChannel() {
         return currentChannel;
+    }
+
+    public void setCurrentChannel() {
     }
 }
